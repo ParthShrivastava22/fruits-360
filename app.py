@@ -1,18 +1,21 @@
 import streamlit as st
 import tensorflow as tf
+import keras  # Import base keras explicitly
 import numpy as np
 from PIL import Image
 
-# 1. THE CLASS LIST (Must be exactly these 5 in alphabetical order)
+# 1. THE CLASS LIST (5 classes)
 class_names = ['Apple', 'Avocado', 'Banana', 'Cherry', 'Orange']
 
 # 2. CACHED MODEL LOADING
 @st.cache_resource
 def load_my_model():
-    # Loading the H5 version to bypass the Keras 3 TypeError
-    return tf.keras.models.load_model('effnet_lstm_best.h5', compile=False)
+    # Use the .keras file with the modern Keras 3 loader
+    return keras.models.load_model('effnet_lstm_best.keras')
 
 model = load_my_model()
+
+# ... (Rest of your UI and prediction code from the previous block)
 
 # 3. UI SETUP
 st.set_page_config(page_title="Fruit Classifier", page_icon="🍓")
