@@ -8,10 +8,16 @@ from PIL import Image
 class_names = ['Apple', 'Avocado', 'Banana', 'Cherry', 'Orange']
 
 # 2. CACHED MODEL LOADING
+import streamlit as st
+import keras
+import numpy as np
+from PIL import Image
+
 @st.cache_resource
 def load_my_model():
-    # Use the .keras file with the modern Keras 3 loader
     return keras.models.load_model('effnet_lstm_best.keras')
+
+# ... rest of your code ...
 
 model = load_my_model()
 
