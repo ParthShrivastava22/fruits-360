@@ -1,17 +1,14 @@
 import streamlit as st
-import tensorflow as tf
 import keras  # Import base keras explicitly
 import numpy as np
 from PIL import Image
+import os
+
+os.environ["TF_USE_LEGACY_KERAS"] = "1"
+import tensorflow as tf
 
 # 1. THE CLASS LIST (5 classes)
 class_names = ['Apple', 'Avocado', 'Banana', 'Cherry', 'Orange']
-
-# 2. CACHED MODEL LOADING
-import streamlit as st
-import keras
-import numpy as np
-from PIL import Image
 
 @st.cache_resource
 def load_my_model():
